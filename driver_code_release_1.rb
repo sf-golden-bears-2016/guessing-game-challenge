@@ -3,15 +3,15 @@ require_relative 'guessing_game'
 puts "We can initialize a guessing game with our desired 'secret number' and the number of allowed guesses"
 game = GuessingGame.new(8, 5) # game 1
 losing_game = GuessingGame.new(999, 1) # game 2
-winning_game = GuessingGame.new(100, 2) # game 3
+# winning_game = GuessingGame.new(100, 2) # game 3
 
 puts "We can set a custom congrats message"
-p (game.congrats_message == "Yay, you won!")
+p (game.congrats_message == "Yay, you won!") #true
 game.congrats_message = "Correct!"
-p (game.congrats_message == "Correct!")
+p (game.congrats_message == "Correct!") #true
 
 puts "There will be 5 guesses remaining in game 1"
-p (game.remaining_guesses == 5)
+p (game.remaining_guesses == 5) #true
 
 puts "There will be 1 guess remaining in game 2"
 p (losing_game.remaining_guesses == 1)
