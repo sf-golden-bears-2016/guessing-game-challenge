@@ -53,7 +53,7 @@ p (game.guess(8) == "Correct! The number was 8")
 p (winning_game.guess(100) == "Yay, you won! The number was 100")
 
 puts "Losing games get a loss message"
-p (losing_game.guess(9) == "You lost! The number was 999")
+p (losing_game.guess(9)  == "You lost! The number was 999")
 p (copied_game.guess(123) == "You lost! The number was 8")
 
 puts "Guesses on completed games show the status of the game"
