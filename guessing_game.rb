@@ -27,14 +27,16 @@ class GuessingGame
 		# elsif @allowed_guesses == 1
 		# 	"WARNING: Only one guess left!"
 		# else
-			if guess_number == @secret_number
-				@congrats_message
+	
+			if guess_number == @secret_number		
+				return @congrats_message
 			elsif guess_number > @secret_number
-				"Too high!"
-			elsif guess_number < @secret_number
-				"Too low!"
+				@allowed_guesses -= 1
+				return "Too high!"
+			else guess_number < @secret_number
+				@allowed_guesses -= 1
+				return "Too low!"
 			end
-		@allowed_guesses -= 1
 		# end
 	end
 end

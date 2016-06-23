@@ -20,6 +20,7 @@ puts "User has neither won nor lost yet"
 p (game.has_won? == false)
 p (game.has_lost? == false)
 
+puts "***********SEAN HERE********"
 puts "Wrong guess receives correct feedback"
 p (game.guess(2) == "Too low!")
 
