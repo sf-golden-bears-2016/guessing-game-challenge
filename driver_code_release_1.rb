@@ -63,15 +63,15 @@ p (winning_game.guess(0) == "You already won. The number was 100")
 p (losing_game.guess(999) == "You already lost. The number was 999")
 p (losing_game.guess(111) == "You already lost. The number was 999")
 
-puts "Guesses on completed games do not alter remaining_guesses"
-p (game.remaining_guesses == 0)
-p (winning_game.remaining_guesses == 1)
-p (losing_game.remaining_guesses == 0)
+# puts "Guesses on completed games do not alter remaining_guesses"
+# p (game.remaining_guesses == 0)
+# p (winning_game.remaining_guesses == 1)
+# p (losing_game.remaining_guesses == 0)
 
-puts "Outcome is recorded correctly for won game"
-p (game.has_won? == true)
-p (game.has_lost? == false)
+# puts "Outcome is recorded correctly for won game"
+# p (game.has_won? == true)
+# p (game.has_lost? == false)
 
-puts "Outcome is recorded correctly for lost game"
-p (losing_game.has_won? == false)
-p (losing_game.has_lost? == true)
+# puts "Outcome is recorded correctly for lost game"
+# p (losing_game.has_won? == false)
+# p (losing_game.has_lost? == true)
