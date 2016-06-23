@@ -1,6 +1,6 @@
 class GuessingGame
 
-  attr_accessor :congrats_message, :remaining_guesses
+  attr_accessor :congrats_message, :remaining_guesses, :past_guesses
 
   def initialize(secret_num, remaining_guesses)
     @secret_num = secret_num
@@ -12,16 +12,39 @@ class GuessingGame
   def guess(guess_num)
 
     if guess_num == @secret_num
-      @congrats_message
-    elsif guess_num < @secret_num
-      "Too low!"
-    elsif guess_num > @secret_num
-      "Too high!"
+      message = @congrats_message
+    elsif guess_num < @secret_num && @past_guesses.include?(guess_num) == false
+      message = "Too low!"
+      @remaining_guesses -= 1
+      if @remaining_guesses == 1
+        message += " WARNING: Only one guess left!"
+      end
+      @past_guesses << guess_num
+    elsif guess_num > @secret_num && @past_guesses.include?(guess_num) == false
+      message = "Too high!"
+      @remaining_guesses -= 1
+      if @remaining_guesses == 1
+        message += " WARNING: Only one guess left!"
+      end
+      @past_guesses << guess_num
+    elsif guess_num < @secret_num && @past_guesses.include?(guess_num)
+      message = "Too low!"
+      if @remaining_guesses == 1
+        message += " WARNING: Only one guess left!"
+      end
+    elsif guess_num > @secret_num && @past_guesses.include?(guess_num)
+      message = "Too high!"
+      if @remaining_guesses == 1
+        message += " WARNING: Only one guess left!"
+      end
+    else
+      message = "Invalid"
     end
 
-    @past_guesses << guess_num
-    @remaining_guesses -= 1
+    message
+
   end
+
 
   def has_won?
     false
