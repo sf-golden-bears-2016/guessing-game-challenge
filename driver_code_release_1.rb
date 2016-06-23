@@ -1,4 +1,4 @@
-require_relative 'guessing_game'
+require_relative 'guessing_game' 
 
 puts "We can initialize a guessing game with our desired 'secret number' and the number of allowed guesses"
 game = GuessingGame.new(8, 5) # game 1
@@ -20,8 +20,11 @@ puts "User has neither won nor lost yet"
 p (game.has_won? == false)
 p (game.has_lost? == false)
 
+puts "***********SEAN HERE********"
 puts "Wrong guess receives correct feedback"
 p (game.guess(2) == "Too low!")
+
+
 
 puts "Wrong guess deducts from remaining guesses"
 p (game.remaining_guesses == 4)
