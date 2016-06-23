@@ -1,4 +1,6 @@
 require_relative 'guessing_game'
+describe "guessing_game" do
+
 
 puts "We can initialize a guessing game with our desired 'secret number' and the number of allowed guesses"
 game = GuessingGame.new(8, 5) # game 1
