@@ -1,6 +1,6 @@
 class GuessingGame
-  attr_accessor :congrats_message, :num_of_guesses
-  attr_reader :secret_num, :player_guess, :has_lost, :has_won
+  attr_accessor :congrats_message, :num_of_guesses, :guesses, :has_lost, :has_won
+  attr_reader :secret_num, :player_guess
 
 
   def initialize(secret_num, num_of_guesses)
@@ -9,6 +9,7 @@ class GuessingGame
     @congrats_message = "Yay, you won!"
     @has_won = false
     @has_lost = false
+    @guesses = []
   end
 
   def has_won?
@@ -16,6 +17,7 @@ class GuessingGame
   end
 
   def has_lost?
+    self.has_lost = true if self.num_of_guesses == 0
     @has_lost
   end
 
@@ -25,18 +27,25 @@ class GuessingGame
 
   def guess(player_guess)
     @player_guess = player_guess
-    self.num_of_guesses -= 1
+    if has_lost?
+      "You lost! The number was #{self.secret_num}"
+    end
+    if !repeated_guess?
+      self.guesses << self.player_guess
+      self.num_of_guesses -= 1
+    end
+
     case
     when low_guess
      "Too low!"
+    when high_guess && final_guess
+      "Too high! WARNING: Only one guess left!"
     when high_guess
       "Too high!"
     when correct_guess
       "#{self.congrats_message} The number was #{self.secret_num}"
-    when high_guess && final_guess
-      "Too high! WARNING: Only one guess left!"
     end
-   end
+  end
 
   def low_guess
     self.player_guess < secret_num
@@ -48,13 +57,15 @@ class GuessingGame
 
   def correct_guess
     self.player_guess == secret_num
+    self.has_won = true
   end
 
   def final_guess
     remaining_guesses == 1
   end
+
+  def repeated_guess?
+    self.guesses.include?(self.player_guess)
+  end
 end
 
-# game = GuessingGame.new(8, 5)
-losing_game = GuessingGame.new(999, 1)
-p losing_game.final_guess
