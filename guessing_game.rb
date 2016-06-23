@@ -11,6 +11,8 @@ class GuessingGame
     @congrats_message = "Yay, you won!"
     @response = ''
     @won_games = []
+    @won_message = "You already won."
+    @loss_message = "You already lost."
   end
 
   # def congrats_message
@@ -35,9 +37,7 @@ class GuessingGame
     end
   end
 
-
   def guess(number)
-
     @remaining_guesses -= 1 if !@numbers_guessed.include?(number)
     @numbers_guessed << number
     if number < @secret_number
@@ -51,11 +51,30 @@ class GuessingGame
       @won_games << 1
       @response = @congrats_message += " The number was #{@secret_number}"
     end
-      if has_won?
-        @response
-      elsif has_lost?
-        return "You lost! The number was #{@secret_number}"
-      end
+    #THIS IS WORKING!!!
+    if has_won?
+      @response
+    elsif has_lost?
+      return "You lost! The number was #{@secret_number}"
+    end
+
+    #need a method
+    def guess_count
+      @numbers_guessed
+    end
+    #TEST
+      #if they have already won
+      # if has_won? || number == @secret_number
+      #   return @won_message += "The number was #{@secret_number}"
+      # elsif has_lost? || remaining_guesses == 0
+      #   return @loss_message += "The number was #{@secret_number}"
+      # end
+
+
+
+
+
+
 
       # if won_games
     # elsif has_won?    #@won_games.length > 1
