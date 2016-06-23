@@ -23,6 +23,8 @@ p (game.has_lost? == false)
 puts "Wrong guess receives correct feedback"
 p (game.guess(2) == "Too low!")
 
+
+
 puts "Wrong guess deducts from remaining guesses"
 p (game.remaining_guesses == 4)
 
