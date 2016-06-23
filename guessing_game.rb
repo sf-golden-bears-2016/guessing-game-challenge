@@ -12,7 +12,6 @@ class GuessingGame
   end
 
   def congrats_message
-
     return "Yay, you won!"
 
   end
