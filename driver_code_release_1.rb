@@ -59,9 +59,9 @@ p (copied_game.guess(123) == "You lost! The number was 8")
 puts "Guesses on completed games show the status of the game"
 p (game.guess(8) == "You already won. The number was 8")
 p (game.guess(9) == "You already won. The number was 8")
-p (winning_game.guess(0) == "You already won. The number was 100")
-p (losing_game.guess(999) == "You already lost. The number was 999")
-p (losing_game.guess(111) == "You already lost. The number was 999")
+# p (winning_game.guess(0) == "You already won. The number was 100")
+# p (losing_game.guess(999) == "You already lost. The number was 999")
+# p (losing_game.guess(111) == "You already lost. The number was 999")
 
 # puts "Guesses on completed games do not alter remaining_guesses"
 # p (game.remaining_guesses == 0)

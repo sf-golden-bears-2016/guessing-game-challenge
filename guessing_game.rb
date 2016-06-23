@@ -25,17 +25,29 @@ class GuessingGame
       @remaining_guesses -= 1
       @guesses << number
     end
-    if number == @secret_number
+    if (number == @secret_number) && (@remaining_guesses > 0)
+      @won = true
       return "#{@congrats_message} The number was #{@secret_number}"
     end
+    puts "@won:"
+    p @won
+    puts "@lost:"
+    p @lost
     if @remaining_guesses > 0
       suffix = warnings[1] if @remaining_guesses == 1
       if number < @secret_number
         return "Too low!#{suffix}"
       else number > @secret_number
-        return "Too high!#{suffix}"
+        return  "Too high!#{suffix}"
+      end
+    else
+      if has_won? == true
+        return "You already won. The number was #{@secret_number}"
+      elsif has_lost? == true
+        return "You already lost. The number was #{@secret_number}"
       end
     end
+    @lost = true if
     return "You lost! The number was #{@secret_number}"
   end
 end
