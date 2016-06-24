@@ -20,7 +20,13 @@ class GuessingGame
 
   def guess(number)
     reduce_guesses(number)
-    if number == @correct_number && number < 50
+    if number == @correct_number && @guess_array.include?(number)
+      p "You already won. The number was #{@correct_number}"
+    elsif number != @correct_number && @guess_array.include?(@correct_number)
+      p "You already won. The number was #{@correct_number}"
+    elsif number != @correct_number && @remaining_guesses == 0
+      p "You lost! The number was #{@correct_number}"
+    elsif number == @correct_number && number < 50
       p "Correct! The number was #{@correct_number}"
     elsif number == @correct_number && number > 50
       p "Yay, you won! The number was #{@correct_number}"
