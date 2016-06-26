@@ -14,11 +14,11 @@ class GuessingGame
 
 	def has_won?
 		return true if @numbers_guessed.include?(@secret_number)
-		return false if @remaining_guesses >= 1
+		false 
 	end
 
 	def has_lost?
-		@remaining_guesses == 0 ? true : false
+		@remaining_guesses == 0 && !has_won? ? true : false
 	end
 
 	def repeated?(number)
@@ -26,24 +26,22 @@ class GuessingGame
 	end
 
 	def game_over?
-		"You already won." + @result if has_won?
-		"You already lost." + @result if has_lost?
+		return "You already won." + @result if has_won?
+		return "You already lost." + @result if has_lost?
 		false
 	end
 
 	def guess(number)
-		game_over?
-
-		@remaining_guesses -= 1 if !repeated?(number) && !game_over?
+		return game_over? if game_over?
+		@remaining_guesses -= 1 if !repeated?(number)
 		@numbers_guessed << number
 
 		return @congrats_message + @result if number == @secret_number
-
 		return "You lost!" + @result if has_lost?
 
-		return result = number > @secret_number ? "Too high!" : "Too low!"
+		result = number > @secret_number ? "Too high!" : "Too low!"
 		result += @warning if @remaining_guesses == 1
-		return result
+		result
 	end
 
 end
