@@ -13,8 +13,7 @@ class GuessingGame
 	end
 
 	def has_won?
-		return true if @numbers_guessed.include?(@secret_number)
-		false 
+		@numbers_guessed.include?(@secret_number) ? true : false
 	end
 
 	def has_lost?
@@ -43,5 +42,4 @@ class GuessingGame
 		result += @warning if @remaining_guesses == 1
 		result
 	end
-
 end
